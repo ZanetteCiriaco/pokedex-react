@@ -1,0 +1,110 @@
+.card{
+    border-radius: 15px;
+    box-shadow: 5px 5px 5px 5px rgb(175, 172, 172);
+    width: 200px;
+    height: 140px;
+    padding: 0 5px 5px 0;
+    background:  url('../../assets/card-background.png') right no-repeat;
+    background-size: 150px;
+    color: black;
+    position: relative;
+    font-family: Rubick, monospace;
+}
+
+.card:hover {
+    cursor: pointer;
+    box-shadow: 5px 5px 5px 5px rgb(103, 178, 197);
+    
+}
+
+@keyframes example {
+  from {
+      transform: rotate(0deg);
+  }
+
+  to {
+      transform: rotate(360deg);
+  }
+}
+
+.card-title{
+    color: rgb(250, 250, 20);
+    background-color: black;
+    border-radius: 15px;
+    padding-left: 15px;
+    padding-right: 22px;
+    text-align: initial;
+    height: 35px;
+    text-transform: capitalize;
+}
+
+.card-title strong {
+    font-size: 17px;
+    line-height: 1;
+    
+    
+}
+
+.content {
+    padding-top: 25px;
+    display: inline-block;
+}
+
+.type-block{
+    background-color: rgb(231, 225, 225);
+    padding: 2px;
+    margin: 5px;
+    min-width: 50px;
+    border-radius: 5px;
+    text-transform: capitalize;
+}
+
+.card-body {
+    display: flex;
+}
+
+.image {
+    width: 120px;
+    height: 100px;
+    position: relative;
+     
+}
+
+.image img {
+    max-width: 100px;
+    max-height: 100px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    float: bottom;  
+}
+
+.id-icon {
+    position: absolute;
+    bottom: 0;
+    background: url('../../assets/id-icon.png');
+    width: 50px;
+    height: 50px;
+    right: -15px;
+    top: -15px;
+    background-size: 50px;
+    text-align: center;
+    color: white;
+   
+}
+
+
+
+
+
+
+
+@media (min-width: 320px) and (max-width: 768px){
+    .card {
+        width: 40vw !important;
+        
+    }
+}
+
+
+

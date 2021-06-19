@@ -1,0 +1,27 @@
+.search {
+    width: 100%;
+    height: 90px;
+    justify-content: center;
+    display: flex;
+}
+
+.search input {
+    width:40%;
+    height: 30px;
+    border-radius: 15px;
+    padding-left: 20px;
+    border: hidden;
+    box-shadow: 0 5px 10px 0 rgb(157, 172, 175);
+    background: url('../../assets/search-icon.png') no-repeat white;
+    background-size: 20px 20px;
+    
+    background-position: 97% 5px;
+
+}
+
+
+input:focus{
+    outline: 0;
+  }
+
+

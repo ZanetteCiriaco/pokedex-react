@@ -1,0 +1,7 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    background: #EFEFBB;
+      background: linear-gradient(to right,rgb(197, 230, 236), rgb(228, 202, 223));
+   
+  }

@@ -1,0 +1,33 @@
+
+
+.container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    height: 70px;    
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0; 
+}
+
+ul li {
+    min-width: 40px;
+    display: inline-block;
+    text-align: center;
+    background-color: white;
+    border-radius: 5px;
+    padding: 8px 5px;
+    border: rgb(153, 151, 151) 1px solid;
+}
+
+li:hover {
+    cursor: pointer;
+    background-color: rgb(223, 217, 217);
+}
+
+button {
+    height: 100%;
+}

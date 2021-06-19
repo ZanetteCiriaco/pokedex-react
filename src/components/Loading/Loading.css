@@ -1,0 +1,6 @@
+.loading {
+    margin: auto;
+    height: 200px;
+    width: 100%;
+    background: url('../../assets/loading.gif') center no-repeat;
+}
