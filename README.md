@@ -1,3 +1,10 @@
+# Pokédex
+
+<img src="https://i.imgur.com/naS2KW6.png">
+<img src="https://i.imgur.com/AMKDZVp.png">
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
