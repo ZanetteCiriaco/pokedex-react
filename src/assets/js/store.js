@@ -2,7 +2,7 @@ let page = 1;
 let start = 0;
 let end = 20;
 
-export default {
+const store = {
     getPage: () => page,
     setPage: p => { page = p },
 
@@ -12,3 +12,5 @@ export default {
     getEnd: () => end,
     setEnd: e => { end = e}
 }
+
+export default store;

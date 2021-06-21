@@ -24,14 +24,13 @@ const Pokedex = () => {
 
     
    async function getData() {
-       const pokemonData =  await api.get('?limit=880').then(response => response.data.results);
+       const pokemonData =  await api.get('?limit=898').then(response => response.data.results);
        setPokemons(pokemonData); 
        setShowPokemons(pokemonData.slice(start, end))
    }
 
 
    function page(start, end) {
-      
         setStart(start)
         setEnd(end);  
         setShowPokemons(pokemons.slice(start, end))
@@ -39,7 +38,6 @@ const Pokedex = () => {
    }
 
    function search(data){
-
         setShowPokemons(data)
         load(1000);
    }
@@ -72,23 +70,17 @@ const Pokedex = () => {
 
             {loading ? (
                 <div className='grid'>
-                {showPokemons.map((pokemon, index) => {
+                    {showPokemons.map((pokemon, index) => {
                     return(
-                        <div className='row'>
-                            <PokemonCard name={pokemon.name} key={index} />
-                            
+                        <div className='row' key={index}>
+                            <PokemonCard name={pokemon.name} /> 
                         </div>    
-                    )
-                })}
-            </div> 
-            
+                        )
+                    })}
+                </div> 
             ) : (
-               
-                <Loading />
-                    
-            )}            
-
-             
+                <Loading />     
+            )}                
         </>
        
     );

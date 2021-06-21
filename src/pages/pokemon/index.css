@@ -64,7 +64,7 @@
 
 .pokemon-left-side-stats .lines-info .lines-info-value {
     background-color: rgb(8, 70, 54);
-    min-height: 30px;
+    height: 30px;
     color: white;
     border-radius: 7px;
     min-width: 60px;
@@ -155,30 +155,26 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin-bottom: 50px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .evolution {
     margin: 0 5px;
+    max-width: 10%;
     text-transform: capitalize;
 }
 
-.evolution strong {
-    position: relative;
-    top: -15px;
-}
 
 .evolution img {
-    max-width: 100px;
-   
+    width: 70%;
+    background-color: rgb(155, 173, 169);
+    border-radius: 50%; 
 }
 
 .evolution:hover {
     cursor: pointer;
-    padding-top: 2px;
-    box-shadow: 6px 4px 2px 3px rgb(180, 182, 181);
-    border-radius: 45%;
-
+    margin-top: -5px;
 }
 
 @keyframes fade{
@@ -196,4 +192,71 @@
 .loading {
     margin-top: 100px;
 }
+
+
+
+@media(min-width: 320px) and (max-width: 1000px){
+    .body {
+        background-size: 50%;
+    }
+    .pokemon-block {
+        flex-direction: column;
+    }
+    .pokemon-name {
+        margin: 0;
+    }
+
+    .pokemon-image {
+        width: 100%;
+        order: 1;
+        
+    }
+    .pokemon-right-side-stats {
+        margin-bottom: 50px;
+    }
+    .pokemon-left-side-stats {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        width: 100%;
+        order: 2;
+        margin-bottom: 50px;
+    }
+
+    .pokemon-left-side-stats .lines-info {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 45%;
+        margin-bottom: 20px;
+        
+    }
+
+    .pokemon-left-side-stats .lines-info strong {
+        text-align: center;
+    }
+
+    .value-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+
+    .pokemon-right-side-stats {
+        order: 3;
+        width: 100%;
+    }
+
+    .evolution-container p {
+      width: 80%;
+    }
+    .evolution {
+        max-width: 30%;
+    }
+    
+    
+
+    
+} 
 

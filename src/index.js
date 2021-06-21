@@ -9,9 +9,7 @@ import history from './history';
 
 ReactDOM.render(
   <Router history={history}>
-    
-      <App />
-       
+      <App />  
   </Router>,
   document.getElementById('root')
 );

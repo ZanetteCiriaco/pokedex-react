@@ -24,7 +24,6 @@ const Header = (props) => {
                     <div className='icon'></div>
                 </>
             )}
-
         </div>
     )
 }

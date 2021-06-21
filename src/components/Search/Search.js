@@ -7,14 +7,11 @@ const Search = (props) => {
 
     const [input, setInput] = useState('');
     
-
     function inputText (value) {
 
         const showPokemons = []
-
         setInput(value)
         
-
         if (value !== '') {
             props.pokemons.forEach(pokemon => { 
                 if(pokemon.name.startsWith(value))
@@ -26,10 +23,8 @@ const Search = (props) => {
 
         if (value === '' || value == null) {
             props.search(props.pokemons.slice(store.getStart(), store.getEnd()))
-        } 
-        
+        }    
     }
-
     
 
     return (
@@ -37,7 +32,7 @@ const Search = (props) => {
             <input
                 type='text' 
                 placeholder='Buscar Pokémon...'
-                onChange={(e)=> inputText(e.target.value)}
+                onChange={(e)=> inputText(e.target.value.toLowerCase())}
                 value={input}>
             </input>   
         </div>

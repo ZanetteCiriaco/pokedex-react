@@ -10,9 +10,6 @@ const App = () => {
                 <Route exact path="/" component={Pokedex} />    
                 <Route exact path="/pokemon/:name" component={Pokemon} />  
             </Switch>
-
-        
-            
         </div>
     )
 }

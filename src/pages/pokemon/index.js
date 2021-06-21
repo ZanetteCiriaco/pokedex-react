@@ -15,7 +15,6 @@ const Pokemon = () => {
     const { name } = useParams();
     const [pokemon, setPokemon] = useState([])
     const [evolution, setEvolution] = useState([])
-    const [image, setImage] = useState(''); 
     const [isLoading, setIsloading] = useState(true)
     const [reload, setReload] = useState('')
    
@@ -62,8 +61,6 @@ const Pokemon = () => {
                 }
 
               })
-
-              setImage(`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`)
               
 
               setTimeout(() => {
@@ -77,18 +74,28 @@ const Pokemon = () => {
 
 
    async function getEvolution(url) {
+        
+        setEvolution([])
 
         await axios.get(url).then(response => {
                 axios.get(response.data.evolution_chain.url).then(response => {
-                
-                    setEvolution([response.data.chain.species.name])
+                    setEvolution(old => [...old,{
+                        id: response.data.chain.species.url.split('/')[6],
+                        name: response.data.chain.species.name}
+                    ])
 
                     response.data.chain.evolves_to.forEach(element => {
-
-                        setEvolution(old => [...old, element.species.name])
+                        setEvolution(old => [...old, {
+                            name : element.species.name, 
+                            id: element.species.url.split('/')[6]}
+                        ])
 
                         element.evolves_to.forEach(res => {
-                            setEvolution(old => [...old, res.species.name])
+                            setEvolution(old => [...old, {
+                                name : res.species.name, 
+                                id: res.species.url.split('/')[6]}
+                            ])
+
                         })
                     });
                 })  
@@ -101,13 +108,11 @@ const Pokemon = () => {
         
         setReload(param)
         
-
         setIsloading(true);
         setTimeout(() => {
             setIsloading(false)
-        }, 100); 
+        }, 200); 
     }
-
 
 
     useEffect(() => {
@@ -125,17 +130,13 @@ const Pokemon = () => {
         <div>
             <Header withBtn = {true} name ='Detalhes'/>
             
-    
             <div className="body">
-
                 <div className="pokemon-block">
-
                     <div className="pokemon-name">
                         <h1>{pokemon.name.split('-').join(' ')}</h1>
                     </div>
                     
-                    <div className="pokemon-left-side-stats">
-                        
+                    <div className="pokemon-left-side-stats"> 
                         <div className="lines-info">
                             <strong> ID </strong>
                             <div className='lines-info-value'> {pokemon.id}</div>
@@ -157,39 +158,33 @@ const Pokemon = () => {
                         </div>
 
                         <div className="lines-info">
-                            <strong> Habilidades </strong>
-                            <div className='value-container'> 
-                            {pokemon.abilities.map(ability => {
+                            <strong> Tipo </strong>
+                            <div className='value-container'>
+                            {pokemon.type.map((type, index) => {
                                 return(
-                                    <div className='lines-info-value'> {ability}</div>
+                                    <div id={type} className='lines-info-value' key={index}> {type}</div>
                                 )
                             })} 
                             </div>  
-                            
                         </div>
 
                         <div className="lines-info">
-                            <strong> Tipo </strong>
-                            <div className='value-container'>
-                            {pokemon.type.map(type => {
+                            <strong> Habilidades </strong>
+                            <div className='value-container'> 
+                            {pokemon.abilities.map((ability, index) => {
                                 return(
-                                    <div id={type} className='lines-info-value'> {type}</div>
+                                    <div className='lines-info-value' key={index}> {ability}</div>
                                 )
                             })} 
                             </div>  
-                        </div>
-                       
+                        </div>   
                     </div>
 
-                    
                     <div className="pokemon-image">
-                        <img src={image} alt='' loading='lazy'></img>
+                        <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${name}.png`} alt='' loading='lazy'></img>
                     </div> 
 
-                    
                     <div className="pokemon-right-side-stats">
-                        
-
                         <div className="lines">
                             <div className="text">
                                 <strong>
@@ -280,20 +275,17 @@ const Pokemon = () => {
                     <p><strong>Cadeia de Evolução</strong></p>
 
                     <div className='evolution-chain'> 
-                    {evolution.map(pokemon => {
-                        return(
-                            <div className='evolution' onClick={()=> redirect(pokemon)}>
-                                <img src ={`https://img.pokemondb.net/sprites/bank/normal/${pokemon}.png`}></img><br></br>
-                                <strong>{pokemon}</strong>
-                            </div>
-                        )
-                    })}
+                        {evolution.map(pokemon => {
+                            return(
+                                <div className='evolution' key={pokemon.id} onClick={()=> redirect(pokemon.id)}>
+                                    <img src ={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`} alt=''></img><br></br>
+                                    <strong>{pokemon.name.split('-').join(' ')}</strong>
+                                </div>
+                            )
+                        })}
                     </div>
                 </div>
-            </div>
-
-            
-            
+            </div> 
         </div>
     );
 }
@@ -304,24 +296,4 @@ export default Pokemon;
 /*setImage(`https://pokeres.bastionbot.org/images/pokemon/${id}.png`)
 https://assets.pokemon.com/assets/cms2/img/pokedex/full/00${value}.png
 
-
-/*
-
-evolist.push({
-                        name: response.data.chain.species.name, 
-                        img: `https://img.pokemondb.net/sprites/bank/normal/${response.data.chain.species.name}.png`
-                    })
-
-                    response.data.chain.evolves_to.forEach(element => {
-
-                        evolist.push({
-                            name:element.species.name,
-                            img: `https://img.pokemondb.net/sprites/bank/normal/${element.species.name}.png`
-                        })
-
-                        element.evolves_to.forEach(res => {
-                            evolist.push({
-                                name: res.species.name,
-                                img: `https://img.pokemondb.net/sprites/bank/normal/${res.species.name}.png`
-                            })
 */
