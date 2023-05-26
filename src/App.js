@@ -6,7 +6,7 @@ import './App.css';
 const App = () => {
     return(
         <div>
-            <Switch>
+            <Switch basename={process.env.PUBLIC_URL}>
                 <Route exact path="/" component={Pokedex} />    
                 <Route exact path="/pokemon/:name" component={Pokemon} />  
             </Switch>
