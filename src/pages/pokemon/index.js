@@ -9,18 +9,16 @@ import './index.css';
 import '../../assets/css/type.css';
 
 
-
-
 const Pokemon = () => {
     const { name } = useParams();
+    const [ pokemonId, setPokemonId] = useState(name)
     const [pokemon, setPokemon] = useState([])
     const [evolution, setEvolution] = useState([])
     const [isLoading, setIsloading] = useState(true)
-    const [reload, setReload] = useState('')
    
 
    async function getPokemon() {
-        await api.get(`/${name}`).then(pokemon => {
+        await api.get(`/${pokemonId}`).then(pokemon => {
             
             const {
                 id,
@@ -103,10 +101,10 @@ const Pokemon = () => {
     }
 
 
-    function redirect (param) {
-        history.push(`/pokemon/${param}`)
-        
-        setReload(param)
+    function redirect (id) {
+        history.push(`/pokemon/${id}`)
+
+        setPokemonId(id)
         
         setIsloading(true);
         setTimeout(() => {
@@ -118,7 +116,7 @@ const Pokemon = () => {
     useEffect(() => {
         getPokemon();
         window.scrollTo(0, 0);
-    }, [reload])
+    }, [pokemonId])
 
 
 
